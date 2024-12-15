@@ -15,8 +15,8 @@ import Dashboard from './pages/admin/Dashboard'
 import CourseTable from './pages/admin/course/CourseTable'
 import AddCourse from './pages/admin/course/AddCourse'
 import EditCourse from './pages/admin/course/EditCourse'
-import EditLecture from './pages/admin/lecture/editLecture'
-import CreateLecture from './pages/admin/lecture/createLecture'
+import EditLecture from './pages/admin/lecture/EditLecture'
+import CreateLecture from './pages/admin/lecture/CreateLecture'
 import CourseDetail from './pages/student/CourseDetail'
 
 const appRouter = createBrowserRouter([
