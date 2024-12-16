@@ -12,7 +12,7 @@ const USER_API = import.meta.env.VITE_API_URL || "https://course-mjvb.vercel.app
 export const authApi = createApi({
     reducerPath:"authApi",
     baseQuery:fetchBaseQuery({
-        baseUrl:USER_API,
+        baseUrl:USER_API,   
         credentials:'include'
     }), 
     endpoints: (builder) => ({
@@ -69,8 +69,7 @@ export const authApi = createApi({
             query: (formData) => ({
                 url:"profile/update",
                 method:"PUT",
-                body:formData,
-                credentials:"include"
+                body:formData
             })
         })
     })

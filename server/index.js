@@ -16,7 +16,8 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // CORS setup
-const allowedOrigins = process.env.ALLOWED_ORIGINS?.split(",") || [];
+// CORS setup
+const allowedOrigins = process.env.ALLOWED_ORIGINS?.split(",") || ["http://localhost:5173", "https://course-taupe-seven.vercel.app"];
 app.use(cors({
     origin: (origin, callback) => {
         if (!origin || allowedOrigins.includes(origin) || origin.endsWith("ngrok-free.app")) {
@@ -25,7 +26,7 @@ app.use(cors({
             callback(new Error("CORS not allowed"));
         }
     },
-    credentials: true,
+    credentials: true, // Allow cookies
 }));
 
 // Middlewares
