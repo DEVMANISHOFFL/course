@@ -3,7 +3,7 @@ import { userLoggedIn, userLoggedOut } from "../authSlice";
 
 
 // const USER_API = "http://localhost:8080/api/v1/user/"
-const USER_API = import.meta.env.VITE_API_URL || "http://localhost:8080/api/v1/user/";
+const USER_API = import.meta.env.VITE_API_URL || "https://course-mjvb.vercel.app/?vercelToolbarCode=8oiaLgnqfopqjRW";
 
 
 // Use USER_API in the baseQuery
