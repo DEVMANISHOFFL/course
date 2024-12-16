@@ -18,16 +18,24 @@ const PORT = process.env.PORT || 3000;
 // CORS setup
 // CORS setup
 const allowedOrigins = process.env.ALLOWED_ORIGINS?.split(",") || ["http://localhost:5173", "https://course-taupe-seven.vercel.app"];
+// Combined and fixed CORS setup
+const cors = require('cors');
+
 app.use(cors({
-    origin: (origin, callback) => {
-        if (!origin || allowedOrigins.includes(origin) || origin.endsWith("ngrok-free.app")) {
-            callback(null, true);
-        } else {
-            callback(new Error("CORS not allowed"));
-        }
+    origin: function (origin, callback) {
+      // Allow requests with no origin (like mobile apps or curl requests)
+      if (!origin) return callback(null, true);
+      
+      if (allowedOrigins.indexOf(origin) === -1) {
+        var msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+        return callback(new Error(msg), false);
+      }
+      return callback(null, true);
     },
-    credentials: true, // Allow cookies
-}));
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true
+  }));
 
 // Middlewares
 app.use(express.json());
